@@ -1,0 +1,17 @@
+<h1>
+    <%- include('header') %>
+</h1>
+
+<h1>
+    Codeial / <%=title%>
+</h1>
+
+
+
+<section id="feed-posts">
+    <h4>Posts</h4>
+    <form action="uploads/post" method="POST">
+        <textarea name="content" cols="30" rows="3" placeholder="type here..." required></textarea>
+        <input type="submit" value="post">
+    </form>
+</section>

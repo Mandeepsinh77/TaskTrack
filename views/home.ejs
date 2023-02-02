@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title>
+        <%=title%>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+   <h1>
+    <%- include('header'); %>
+   </h1>
+    <header style="color: black;">
+        <%=header%>
+    </header>
+    <p style="display: flex; align-items: center;justify-content: center; color: darkcyan;margin-left: 120px;color: brown;">Just
+        Write Here</p>
+
+    <!-- <hr> -->
+
+    <form style="background-color: cadetblue;" action="create-task" method="POST">
+        <div id="description" class="m-top">
+            <label for="" class="bolder" >DESCRIPTION</label>
+            <input type="text" name="description" class="input-field-border-height input-m-top"
+                placeholder="what do yo need to do ?" required>
+            <!-- <hr> -->
+        </div>
+        <div id="category" class="m-top">
+            <label for="" class="bolder">CATEGORY</label>
+            <select name="category" class="input-field-border-height input-m-top" aria-placeholder="choose a category"
+                required>
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="School">School</option>
+                <option value="cleanning">cleanning</option>
+                <option value="Collage">Collage</option>
+                <option value="reading">reading</option>
+                <option value="breakfast">breakfast</option>
+                <option value="lunch">lunch</option>
+                <option value="dinner">dinner</option>
+                <option value="other">other</option>
+            </select>
+        </div><br><br>
+        <!-- <hr> -->
+        <div id="due-date" class="m-top">
+            <label for="" class="bolder">DUE DATE</label>
+            <input type="date" name="date" class="input-field-border-height input-m-top" required>
+        </div>
+        <div class="btn">
+            <button id="add" class="btn" style="color: white; align-items: center; display: flex;"> <i class="fa-solid fa-plus" style="color: darkgoldenrod;"></i> ADD TASK</button>
+            <!-- <button id="delete" class="btn"> <i class="fa-solid fa-trash"></i> DELETE TASKS</button> -->
+        </div>
+        <br><br>
+        <div>
+            <ul>
+                <!-- <hr> -->   
+                <%for(let i of task_list ){ %>
+                    <li class="m-top">
+                        <div id="des-cat-d-flex">
+                            <p class="bolder" style="color: rgb(55, 111, 48);">
+                                <i class="fa-solid fa-arrow-right"></i>
+                                <%=i.description%>
+                            </p>
+                            <div class="delete-icon" >
+                                <a href="/delete-task/?id=<%=i._id%>">
+                                    <i class="fa-solid fa-trash" style="color: red;"></i>
+                                </a>
+                            </div>
+                            <p>
+                                <i class="fa-solid fa-square"></i>
+                                <%=i.category%>
+                            </p>
+
+                        </div>
+
+                        <p>
+                            <!-- <i class="fa-regular fa-minus"></i> -->
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <%=i.date%>
+                        </p>
+                        <hr>
+                    </li>
+                    <%}%>
+            </ul>
+        </div>
+    </form>
+</body>
+
+</html>
