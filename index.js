@@ -3,29 +3,15 @@ const app = express();
 const port = 8000;
 const db = require("./config/mongoose");
 
-
-//use for session cookie:
-
-// const session = require('express-session');
-// const passport = require('passport');
-// const passportLocal = require('./config/passport-local-strategy');
-
-
-
 app.use(express.urlencoded());
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-
 const Task = require("./models/task");
 const User = require("./models/user");
 
-
-
-
 app.use(express.static("assets"))
-
 
 //set up the view engine
 app.set('view engine', 'ejs');
